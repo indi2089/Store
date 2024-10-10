@@ -25,6 +25,13 @@ CREATE TABLE tienda_ropa_mujer_ventas (
 );
 INSERT INTO tienda_ropa_mujer_marca (nombre)
 VALUES ('Marca A'), ('Marca B'), ('Marca C');
+INSERT INTO tienda_ropa_mujer_ventas (id_prenda, cantidad, fecha_venta, precio)
+VALUES (1, 2, '2024-10-01', 15000.00), (2, 1, '2024-10-02', 25000.00), (3, 3, '2024-10-03', 20000.00);
+UPDATE tienda_ropa_mujer_prenda
+SET precio = 18000.00
+WHERE nombre = 'Blusa';
+DELETE FROM tienda_ropa_mujer_ventas
+WHERE id_venta = 1;
 
 
 1. Tabla `tienda_ropa_mujer_marca` (Entidad: Marca)
