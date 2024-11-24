@@ -1,39 +1,138 @@
-# Proyecto Tienda de Ropa
 
-- Estudiante: Indira Picado Picado.
-- descripcion del proyecto:
- Proyecto: Sistema de Gestión para Tienda de Ropa de Mujer
+# Curso Plataformas Abiertas
 
-Este proyecto está basado en un modelo entidad-relación (E-R) que tiene como objetivo gestionar  información de una tienda de ropa de mujer. El sistema organiza los datos en torno a tres entidades clave: marca, prenda y ventas, las cuales están interrelacionadas a través de claves foráneas, asegurando la integridad de los datos.
- 1. Entidad: Marca
-La entidad `marca` representa las diferentes marcas de ropa disponibles en la tienda. Cada marca tiene un identificador único que se relaciona con las prendas que ofrece la tienda. Esta entidad asegura que las prendas estén clasificadas de acuerdo a su marca.
+## Descripción
+Una API de una tienda de ropa implementada con bases de datos en SQL y en PHP.
 
-- Atributos: 
-  - `id_marca`: Identificador único de la marca.
-  - `nombre`: Nombre de la marca (por ejemplo, Nike, Adidas).
+## Diagrama de la estructura de datos
+marcas: Contendrá las marcas disponibles.
+prendas: Listará las prendas, con referencias a las marcas.
+ventas: Registrará las ventas realizadas.
 
- 2. Entidad: Prenda
-La entidad `prenda` representa los productos de la tienda. Cada prenda está asociada a una marca y tiene un precio específico. A través de la relación con la entidad `marca`, se puede gestionar qué prendas pertenecen a cada marca.
+![alt text](./otros/imagenes/diagrama.png "Diagrama")
 
-- Atributos: 
-  - `id_prenda`: Identificador único de la prenda.
-  - `nombre`: Nombre de la prenda (blusa, pantalón, etc.).
-  - `id_marca`: Clave foránea que asocia la prenda con su marca.
-  - `precio`: Precio de la prenda.
+## Integrantes
 
- 3. Entidad: Venta
-La entidad `venta` registra todas las transacciones realizadas en la tienda. Cada venta incluye información sobre la prenda vendida, la cantidad, el precio de venta y la fecha de la transacción. Las ventas están directamente relacionadas con las prendas, permitiendo un control detallado sobre el inventario y las ganancias.
+Indira Picado Picado
 
-- Atributos: 
-  - `id_venta`: Identificador único de la venta.
-  - `id_prenda`: Clave foránea que identifica la prenda vendida.
-  - `cantidad`: Cantidad de prendas vendidas.
-  - `fecha_venta`: Fecha de la venta.
-  - `precio`: Precio al que se vendió la prenda.
+## Uso de Endpoints de la API
 
- Relaciones entre las Entidades
+Ejemplo de como puede ir documentados los endpoints.
 
-- Relación Marca-Prenda: Una marca puede tener múltiples prendas asociadas, lo que refleja una relación **uno a muchos**. Esto permite gestionar las prendas por marca, facilitando el análisis de ventas por marca específica.
-  
-- Relación Prenda-Venta: Una prenda puede aparecer en múltiples ventas, pero cada venta está relacionada con una prenda específica. Esta es una relación **uno a muchos** entre las prendas y las ventas, permitiendo controlar el inventario y las ventas realizadas.
 
+1. Endpoints para obtener todos los libros:
+   - Método: GET
+   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/`
+   - Descripción: Obtiene una lista de todos los libros disponibles en el sistema.
+
+   ```http
+   GET http://localhost/api/libreria-api/public/index.php/libros/
+   ```
+
+   Ejemplo de respuesta:
+   ```json
+   [
+     {
+       "id": 1,
+       "titulo": "Libro A",
+       "autor": "Autor X",
+       "precio": 19.99
+     },
+     {
+       "id": 2,
+       "titulo": "Libro B",
+       "autor": "Autor Y",
+       "precio": 25.50
+     }
+   ]
+   ```
+
+2. Endpoint para obtener un libro por ID:
+   - Método: GET
+   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
+   - Descripción: Obtiene la información de un libro específico usando su ID.
+
+   ```http
+   GET http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   ```
+
+   Ejemplo de uso:
+   ```http
+   GET http://localhost/api/libreria-api/public/index.php/libros/1
+   ```
+
+   Ejemplo de respuesta:
+   ```json
+   {
+     "id": 1,
+     "titulo": "Libro A",
+     "autor": "Autor X",
+     "precio": 19.99
+   }
+   ```
+
+3. Endpoint para insertar un libro:
+   - Método: POST
+   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/`
+   - Descripción: Inserta un nuevo libro en la base de datos.
+
+   ```http
+   POST http://localhost/api/libreria-api/public/index.php/libros/
+   ```
+
+   Cuerpo de la petición (JSON):
+   ```json
+   {
+     "titulo": "Nuevo Libro",
+     "autor": "Autor Z",
+     "precio": 30.00
+   }
+   ```
+
+   Ejemplo de respuesta:
+   ```json
+   {
+     "mensaje": "Libro insertado exitosamente"
+   }
+   ```
+
+4. Endpoint para actualizar un libro por ID:
+   - Método: PUT
+   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
+   - Descripción: Actualiza la información de un libro específico.
+
+   ```http
+   PUT http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   ```
+
+   Cuerpo de la petición (JSON):
+   ```json
+   {
+     "titulo": "Libro Actualizado",
+     "autor": "Autor X",
+     "precio": 35.00
+   }
+   ```
+
+   Ejemplo de respuesta:
+   ```json
+   {
+     "mensaje": "Libro actualizado exitosamente"
+   }
+   ```
+
+5. Endpoint para eliminar un libro por ID:
+   - Método: DELETE
+   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
+   - Descripción: Elimina un libro específico de la base de datos.
+
+   ```http
+   DELETE http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   ```
+
+   Ejemplo de respuesta:
+   ```json
+   {
+     "mensaje": "Libro eliminado exitosamente"
+   }
+   ```
