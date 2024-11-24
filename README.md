@@ -17,33 +17,48 @@ Indira Picado Picado
 
 ## Uso de Endpoints de la API
 
-Ejemplo de como puede ir documentados los endpoints.
 
 
-1. Endpoints para obtener todos los libros:
+1. Endpoints para obtener todas las marcas:
    - Método: GET
-   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/`
-   - Descripción: Obtiene una lista de todos los libros disponibles en el sistema.
+   - Endpoint: http://localhost/proyecto-tienda/scripts/public/index.php/marcas
+   - Descripción: Obtiene una lista de todas las marcas disponibles en el sistema.
 
    ```http
-   GET http://localhost/api/libreria-api/public/index.php/libros/
+   GET http://localhost/proyecto-tienda/scripts/public/index.php/marcas
    ```
 
    Ejemplo de respuesta:
    ```json
    [
-     {
-       "id": 1,
-       "titulo": "Libro A",
-       "autor": "Autor X",
-       "precio": 19.99
-     },
-     {
-       "id": 2,
-       "titulo": "Libro B",
-       "autor": "Autor Y",
-       "precio": 25.50
-     }
+      {
+        "id": "1",
+        "nombre": "Camisa Casual"
+    },
+    {
+        "id": "2",
+        "nombre": "Camisa Casual"
+    },
+    {
+        "id": "3",
+        "nombre": "Adiddas"
+    },
+    {
+        "id": "4",
+        "nombre": "blusa"
+    },
+    {
+        "id": "5",
+        "nombre": "medias"
+    },
+    {
+        "id": "6",
+        "nombre": "puma"
+    },
+    {
+        "id": "7",
+        "nombre": "pantalon"
+    }
    ]
    ```
 
