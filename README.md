@@ -62,92 +62,91 @@ Indira Picado Picado
    ]
    ```
 
-2. Endpoint para obtener un libro por ID:
+2. Endpoint para obtener un Marca por ID:
    - Método: GET
-   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
-   - Descripción: Obtiene la información de un libro específico usando su ID.
+   - Endpoint: `http://localhost/proyecto-tienda/scripts/public/index.php/marcas{id-del-marcas}`
+   - Descripción: Obtiene la información de una Marcaespecífica usando su ID.
 
    ```http
-   GET http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   GET  `http://localhost/proyecto-tienda/scripts/public/index.php/marcas{id-del-marcas}` 
    ```
 
    Ejemplo de uso:
    ```http
-   GET http://localhost/api/libreria-api/public/index.php/libros/1
+   GET  `http://localhost/proyecto-tienda/scripts/public/index.php/marcas/1 
    ```
 
    Ejemplo de respuesta:
    ```json
-   {
-     "id": 1,
-     "titulo": "Libro A",
-     "autor": "Autor X",
-     "precio": 19.99
-   }
-   ```
+  [
+    {
+        "id": "1",
+        "nombre": "Camisa Casual"
+    },
+       ```
 
-3. Endpoint para insertar un libro:
+3. Endpoint para crear una marca:
    - Método: POST
-   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/`
-   - Descripción: Inserta un nuevo libro en la base de datos.
+   - Endpoint: http://localhost/proyecto-tienda/scripts/public/index.php/marcas
+   - Descripción: Inserta un nueva marca en la base de datos.
 
    ```http
-   POST http://localhost/api/libreria-api/public/index.php/libros/
+   POST http://localhost/proyecto-tienda/scripts/public/index.php/marcas
    ```
 
    Cuerpo de la petición (JSON):
    ```json
    {
-     "titulo": "Nuevo Libro",
-     "autor": "Autor Z",
-     "precio": 30.00
+  "nombre": "ROXY"
    }
    ```
 
    Ejemplo de respuesta:
    ```json
-   {
-     "mensaje": "Libro insertado exitosamente"
-   }
+  {
+    "success": true
+  }
    ```
 
-4. Endpoint para actualizar un libro por ID:
+4. Endpoint para actualizar una marca por ID:
    - Método: PUT
-   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
-   - Descripción: Actualiza la información de un libro específico.
+   - Endpoint:  `http://localhost/proyecto-tienda/scripts/public/index.php/marcas/1{id-del-maraca}`
+   - Descripción: Actualiza la información de una marca específica.
 
    ```http
-   PUT http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   PUT http://localhost/proyecto-tienda/scripts/public/index.php/marcas/1
    ```
 
    Cuerpo de la petición (JSON):
    ```json
    {
-     "titulo": "Libro Actualizado",
-     "autor": "Autor X",
-     "precio": 35.00
-   }
+
+    "nombre": "zara"
+}
    ```
 
    Ejemplo de respuesta:
    ```json
    {
-     "mensaje": "Libro actualizado exitosamente"
-   }
+    "success": true
+}
    ```
 
 5. Endpoint para eliminar un libro por ID:
    - Método: DELETE
-   - Endpoint: `http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}`
-   - Descripción: Elimina un libro específico de la base de datos.
+   - Endpoint: `http://localhost/proyecto-tienda/scripts/public/index.php/marcas/1{id-del-libro}`
+   - Descripción: Elimina un marca específica de la base de datos.
 
    ```http
-   DELETE http://localhost/api/libreria-api/public/index.php/libros/{id-del-libro}
+   DELETE http://localhost/proyecto-tienda/scripts/public/index.php/marcas/1
    ```
 
    Ejemplo de respuesta:
    ```json
    {
-     "mensaje": "Libro eliminado exitosamente"
-   }
+    "success": false,
+    "message": "ID no especificado."
+}{
+    "success": null
+}
    ```
