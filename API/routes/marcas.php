@@ -1,3 +1,4 @@
+<?php
 // API/routes/marcas.php
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['ventas'])) {
     $query = "SELECT DISTINCT m.nombre FROM marcas m
@@ -19,3 +20,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['top'])) {
     $data = $result->fetch_all(MYSQLI_ASSOC);
     echo json_encode($data);
 }
+?>

@@ -31,7 +31,7 @@ class MarcasController {
     }
 
     // Eliminar una marca
-    public function delete($id) {
+    public function  delete($id) {
         $marca = new Marca();
         $result = $marca->delete($id);
         echo json_encode(['success' => $result]);

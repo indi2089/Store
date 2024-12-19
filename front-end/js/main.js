@@ -1,4 +1,4 @@
-const API_URL = "http://localhost/Store/API/public";
+const API_URL = "http://localhost/Store/API/";
 
 // Mostrar prendas
 function fetchPrendas() {
@@ -26,27 +26,32 @@ function fetchPrendas() {
 }
 
 // Agregar o editar prenda
-function savePrenda() {
-    const id = document.getElementById('prenda-id').value;
-    const nombre = document.getElementById('prenda-nombre').value;
-    const marca = document.getElementById('prenda-marca').value;
-    const precio = document.getElementById('prenda-precio').value;
-    const stock = document.getElementById('prenda-stock').value;
+async function savePrenda() {
+    const data = {
+        nombre: document.getElementById("nombre").value,
+        precio: document.getElementById("precio").value,
+        stock: document.getElementById("stock").value
+    };
 
-    const method = id ? 'PUT' : 'POST';
-    const url = id ? `${API_URL}prendas.php?id=${id}` : `${API_URL}prendas.php`;
-    const prendaData = { nombre, marca, precio, stock };
-
-    fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(prendaData),
-    })
-        .then(response => response.json())
-        .then(() => {
-            fetchPrendas();
-            document.getElementById('prenda-form').style.display = 'none';
+    try {
+        const response = await fetch("http://localhost/Store/routes/prendas.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
         });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Prenda guardada:", result);
+        alert("Prenda guardada exitosamente");
+    } catch (error) {
+        console.error("Error guardando la prenda:", error);
+    }
 }
 
 // Eliminar prenda
